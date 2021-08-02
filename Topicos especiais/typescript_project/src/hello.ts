@@ -1,5 +1,4 @@
 import internal from "stream"
-
 //Do tipo boolean
 const isValid: boolean = true
 //Do tipo number
