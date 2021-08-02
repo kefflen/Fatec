@@ -1,0 +1,15 @@
+npm init -y
+npm install typescript ts-node-dev @types/node -D
+npx tsc --init --rootDir src --outDir build --esModuleInterop --resolveJsonModule --lib es6 --module commonjs --allowJs true --noImplicitAny true
+
+/Para compilar o typescript
+    npx tsc
+
+/Para executar o codigo
+    /Inserir o script 'dev' no package.json
+        "scripts": {
+            "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts"
+        },
+
+REFS:
+    https://www.aluiziodeveloper.com.br/criar-aplica%C3%A7%C3%A3o-node-js-com-typescript/
