@@ -11,5 +11,8 @@ npx tsc --init --rootDir src --outDir build --esModuleInterop --resolveJsonModul
             "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts"
         },
 
+Para instalar express
+    npm add @types/express -D
+
 REFS:
     https://www.aluiziodeveloper.com.br/criar-aplica%C3%A7%C3%A3o-node-js-com-typescript/

@@ -1,4 +1,5 @@
 import internal from "stream"
+
 //Do tipo boolean
 const isValid: boolean = true
 //Do tipo number
@@ -39,6 +40,7 @@ interface Aluno {
     notas: number[]
     calcularMedias(): void
 }
+
 const aluno1 :Aluno = {
     nome: "Alysson", idade: 18, 
     publica: true, notas: [1,2,3,4], 
@@ -62,8 +64,51 @@ class Estudante implements Aluno {
         this.notas = Array<number>()
     }
     calcularMedias() {
-
+        
     }
 }
+
+interface Saudacao {
+    bomDia(nome: string): void
+    boaTarde(nome: string): void
+    boaNoite(nome: string): void
+}
+
+class Superior {
+    protected titulacao: string
+    constructor(titulacao: string) {
+        this.titulacao = titulacao
+    }
+}
+
+class Professor extends Superior implements Saudacao {
+    #nome: string = ""
+    constructor(nome: string, titulacao: string) {
+        super(titulacao)
+        this.nome = nome
+    }
+
+    get nome() {
+        return this.#nome
+    }
+
+    set nome(value) {
+        this.#nome = value.trim()
+    }
+
+    bomDia(nome: string) {
+        console.log(`${this.titulacao} ${this.nome}: Bom dia, ${nome}`)
+    }
+    boaTarde(nome: string) {
+        console.log(`${this.titulacao} ${this.nome}: Boa tarde, ${nome}`)
+    }
+    boaNoite(nome: string) {
+        console.log(`${this.titulacao} ${this.nome}: Boa noite, ${nome}`)
+    }
+}
+let prof1 = new Professor("Daniel", "Doutor")
+prof1.boaTarde("Fulano")
+prof1.boaNoite("Fuluno2")
+prof1.bomDia("Fuluno3")
 
 
