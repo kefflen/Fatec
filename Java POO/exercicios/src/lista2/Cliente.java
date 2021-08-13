@@ -37,6 +37,7 @@ public class Cliente {
 		System.out.println(this.toString());
 	}
 	
+	
 	public String toString() {
 		return String.format("Cliente(nome='%s', nmrConta='%s', nmrAgencia='%s', saldoAtual=%.2f)", this.nome, this.numeroConta, this.numeroAgencia, this.saldo);
 	}
@@ -46,12 +47,13 @@ public class Cliente {
 		return numeroConta;
 	}
 	
-	public void setNumeroConta(String numeroConta) {
+	final public void setNumeroConta(String numeroConta) {
 		int size = 8;
 		if (numeroConta.length() == size & this.hasVerifyDigit(numeroConta)) {
 			this.numeroConta = numeroConta;
 		} else {
-			throw new IllegalArgumentException(String.format("Valor inserido para o numero da conta é invalido. Precisa ter %d caracteres e conter um digito verificador\n", size));
+			throw new IllegalArgumentException(String.format(
+					"Valor inserido para o numero da conta é invalido. Precisa ter %d caracteres e conter um digito verificador\n", size));
 		}
 	}
 	
@@ -59,7 +61,7 @@ public class Cliente {
 		return numeroAgencia;
 	}
 	
-	public void setNumeroAgencia(String numeroAgencia) {
+	final public void setNumeroAgencia(String numeroAgencia) {
 		int size = 6;
 		if (numeroAgencia.length() == size & this.hasVerifyDigit(numeroAgencia)) {
 			this.numeroAgencia = numeroAgencia;
@@ -72,7 +74,7 @@ public class Cliente {
 		return nome;
 	}
 	
-	public void setNome(String nome) {
+	final public void setNome(String nome) {
 		String result = nome.trim();
 		if (result.length() <= 30) {
 			this.nome = nome.trim();	
@@ -85,7 +87,7 @@ public class Cliente {
 		return saldo;
 	}
 	
-	public void setSaldo(float saldo) {
+	final public void setSaldo(float saldo) {
 		this.saldo = saldo;	
 	}
 	

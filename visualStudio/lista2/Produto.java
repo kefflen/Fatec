@@ -8,10 +8,10 @@ public class Produto {
     
     Produto() { }
     Produto(int id, String descricao, int qtd, float preco) {
-        this.id = id;
-        this.descricao = descricao;
-        this.qtd = qtd;
-        this.preco = preco;
+        this.setId(id);
+        this.setDescricao(descricao);
+        this.setPreco(preco);
+        this.setQtd(qtd);
     }
     
     public void comprar(int qtd) {

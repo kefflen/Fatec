@@ -1,4 +1,4 @@
-package exercicios;
+package revision;
 
 public class Teste {
 
