@@ -7,12 +7,13 @@ public class Aluno {
 	private float p1;
 	private float p2;
 	
+	
 	public Aluno(int numeroAluno, String nome, int idade, float p1, float p2) {
-		this.numeroAluno = numeroAluno;
-		this.nome = nome;
-		this.idade = idade;
-		this.p1 = p1;
-		this.p2 = p2;
+		this.setNumeroAluno(numeroAluno);
+		this.setNome(nome);
+		this.setIdade(idade);
+		this.setP1(p1);
+		this.setP2(p2);
 	}
 
 	
@@ -30,7 +31,11 @@ public class Aluno {
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		if (nome.trim().length() <= 30) {
+			this.nome = nome;
+		} else {
+			throw new IllegalArgumentException("O nome não deve ter mais de 30 caracteres");
+		}
 	}
 
 	public int getIdade() {
@@ -38,6 +43,7 @@ public class Aluno {
 	}
 
 	public void setIdade(int idade) {
+		this.positiveOrExeption(idade, "idade");
 		this.idade = idade;
 	}
 
@@ -46,6 +52,7 @@ public class Aluno {
 	}
 
 	public void setP1(float p1) {
+		this.positiveOrExeption(p1, "p1");
 		this.p1 = p1;
 	}
 
@@ -54,9 +61,24 @@ public class Aluno {
 	}
 
 	public void setP2(float p2) {
+		this.positiveOrExeption(p2, "p2");
 		this.p2 = p2;
 	}
 	
 	
+	public void notaFinal() {
+		double media = (p1+p2) / 2;
+		System.out.printf("Media final do aluno %s: %.1f\n", nome, media);
+	}
 	
+	public void dadosAluno () {
+		System.out.printf("Dados: nmrAluno=%d, nome='%s', idade=%d\n", numeroAluno, nome, idade);
+	}
+	
+	private void positiveOrExeption(double value, String valueName) {
+		if (value < 0) {
+			String msg = String.format("O valor %d não pode ser atribuida a variavel '%s'", value, valueName);
+			throw new IllegalArgumentException(msg);
+		}
+	}
 }
