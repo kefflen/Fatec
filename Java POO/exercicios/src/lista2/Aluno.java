@@ -23,6 +23,7 @@ public class Aluno {
 	}
 
 	public void setNumeroAluno(int numeroAluno) {
+		//Tem uma instrução estranha que foi passada na lista
 		this.numeroAluno = numeroAluno;
 	}
 
@@ -32,7 +33,7 @@ public class Aluno {
 
 	public void setNome(String nome) {
 		if (nome.trim().length() <= 30) {
-			this.nome = nome;
+			this.nome = nome.trim();
 		} else {
 			throw new IllegalArgumentException("O nome não deve ter mais de 30 caracteres");
 		}
@@ -75,9 +76,11 @@ public class Aluno {
 		System.out.printf("Dados: nmrAluno=%d, nome='%s', idade=%d\n", numeroAluno, nome, idade);
 	}
 	
-	private void positiveOrExeption(double value, String valueName) {
+	private void positiveOrExeption(double value, String attName) {
 		if (value < 0) {
-			String msg = String.format("O valor %d não pode ser atribuida a variavel '%s'", value, valueName);
+			String msg = 
+					"O atributo '" + attName + "' "
+					+ "não aceita valores negativos: value=" + value;
 			throw new IllegalArgumentException(msg);
 		}
 	}
