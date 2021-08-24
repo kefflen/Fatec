@@ -22,16 +22,20 @@ public class Aluno {
 		return numeroAluno;
 	}
 
-	public void setNumeroAluno(int numeroAluno) {
-		//Tem uma instrução estranha que foi passada na lista
-		this.numeroAluno = numeroAluno;
+	final public void setNumeroAluno(int numeroAluno) {
+		int size = Integer.toString(numeroAluno).length();
+		if (size == 6) {
+			this.numeroAluno = numeroAluno;
+		} else {
+			throw new IllegalArgumentException("O numero do aluno deve conter 6 digitos");
+		}
 	}
 
 	public String getNome() {
 		return nome;
 	}
 
-	public void setNome(String nome) {
+	final public void setNome(String nome) {
 		if (nome.trim().length() <= 30) {
 			this.nome = nome.trim();
 		} else {
@@ -43,7 +47,7 @@ public class Aluno {
 		return idade;
 	}
 
-	public void setIdade(int idade) {
+	final public void setIdade(int idade) {
 		this.positiveOrExeption(idade, "idade");
 		this.idade = idade;
 	}
@@ -52,7 +56,7 @@ public class Aluno {
 		return p1;
 	}
 
-	public void setP1(float p1) {
+	final public void setP1(float p1) {
 		this.positiveOrExeption(p1, "p1");
 		this.p1 = p1;
 	}
@@ -61,7 +65,7 @@ public class Aluno {
 		return p2;
 	}
 
-	public void setP2(float p2) {
+	final public void setP2(float p2) {
 		this.positiveOrExeption(p2, "p2");
 		this.p2 = p2;
 	}
