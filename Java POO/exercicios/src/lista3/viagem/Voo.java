@@ -1,4 +1,4 @@
-package lista3;
+package lista3.viagem;
 
 public class Voo {
 	private String origem;

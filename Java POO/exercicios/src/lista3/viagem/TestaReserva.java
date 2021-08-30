@@ -1,4 +1,4 @@
-package lista3;
+package lista3.viagem;
 
 import java.util.Date;
 

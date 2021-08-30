@@ -1,11 +1,11 @@
-package lista3;
+package lista3.viagem;
 
 public class Passageiro {
 	private String nome;
 	private String cpf;
 	
 	public Passageiro() {
-		super();
+
 	}
 
 	public Passageiro(String nome, String cpf) {
