@@ -1,6 +1,7 @@
 import Product from "../typeorm/entities/Products";
 import ProductRepository from "../typeorm/repositories/ProductRepositories";
 import { getCustomRepository } from "typeorm";
+import AppError from "../../../shared/errors/AppError";
 
 // vamos criar uma interface que é um tipo de produto
 interface IRequest {
@@ -20,7 +21,7 @@ class CreateProductService {
         // vamos verificar se o produto já existe
         let productExists = await productRepository.findByName(name);
         if (productExists) {
-            console.log(`Produto já existe`)
+           throw new AppError("Ja existe um poduto com esse nome")
         }
         // cria o produto para inserção
         let newProduct = productRepository.create({
