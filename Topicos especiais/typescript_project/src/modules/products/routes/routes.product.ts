@@ -5,9 +5,10 @@ let productRouter = Router()
 
 let productController = new ProductController()
 import { celebrate, Joi, Segments } from 'celebrate'
+import isAutheticated from '../../../shared/middleware/isAuthenticated'
 
 
-productRouter.get("/", productController.index)
+productRouter.get("/", isAutheticated, productController.index)
 
 productRouter.get('/:id',
 celebrate({
@@ -16,7 +17,7 @@ celebrate({
   }
 }))
 
-productRouter.get("/:id", productController.show)
+productRouter.get("/:id",  isAutheticated, productController.show)
 
 
 productRouter.post('/',
@@ -28,7 +29,7 @@ celebrate({
   }
 }))
 
-productRouter.post("/", productController.create)
+productRouter.post("/",  isAutheticated, productController.create)
 
 
 productRouter.delete('/:id',
@@ -37,7 +38,7 @@ celebrate({
     id: Joi.string().uuid().required()
   }
 }))
-productRouter.post("/:id", productController.delete)
+productRouter.post("/:id",  isAutheticated, productController.delete)
 
 
 productRouter.put('/:id',
@@ -51,7 +52,7 @@ celebrate({
     quantity: Joi.number().required()
   }
 }))
-productRouter.put("/:id", productController.update)
+productRouter.put("/:id",  isAutheticated, productController.update)
 
 
 export default productRouter
