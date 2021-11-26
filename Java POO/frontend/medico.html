@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="styles.css">
   <title>Consumindo APIS do Spring Boot Suite</title>
-  <script src="funcoes.js"></script>
+  <script src="funcoesMedico.js"></script>
 </head>
 
 <body onload="carregaTabela()">
@@ -42,41 +42,31 @@
   </header>
   <main>
     <div class="container">
-      <h3> Cadastro de Pacientes </h3>
+      <h3> Cadastro de medicos </h3>
       <form>
-        <input hidden id="pacienteId">
+        <input hidden id="medicoId">
         <div class="form-group">
           <label for="nome"> Nome </label>
           <input type="text" class="form-control" id="nome" />
         </div>
         <div class="form-group">
-          <label for="cpf"> CPF </label>
-          <input type="text" class="form-control" id="cpf" />
+          <label for="crm"> CRM </label>
+          <input type="text" class="form-control" id="crm" />
         </div>
         <div class="form-group">
-          <label for="peso"> Peso </label>
-          <input type="number" class="form-control" id="peso" />
-        </div>
-        <div class="form-group">
-          <label for="altura"> Altura </label>
-          <input type="number" class="form-control" id="altura" />
-        </div>
-        <div class="form-group">
-          <label for="idade"> Idade </label>
-          <input type="number" class="form-control" id="idade" />
+          <label for="especialidade"> Especialidade </label>
+          <input type="text" class="form-control" id="especialidade" />
         </div>
         <button onClick="insere()" type="button" class="btn btn-primary">Enviar</button>
       </form>
       <section>
-        <h3> Lista de Pacientes </h3>
+        <h3> Lista de medicos </h3>
         <table class="table">
           <theader>
             <th> Código </th>
             <th> Nome </th>
-            <th> CPF </th>
-            <th> Peso </th>
-            <th> Altura </th>
-            <th> Idade </th>
+            <th> CRM </th>
+            <th> Especialidade</th>
             <th> Remover </th>
             <th> Editar </th>
           </theader>
