@@ -9,9 +9,9 @@ export const Routes: React.FC = () => {
     return (
 
         <Switch>
-            <Route component={Dashboard} path="/" exact/> 
+            <Route component={DashboardMovie} path="/" exact/>
+            <Route component={Dashboard} path="/github" exact/> 
             <Route component={Repository} path="/repo"/>
-            <Route component={DashboardMovie} path="/movie" />
         </Switch>
     )
 

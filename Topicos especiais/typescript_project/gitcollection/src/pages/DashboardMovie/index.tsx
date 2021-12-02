@@ -4,45 +4,47 @@ import logo from '../../assets/logo.svg'
 import { movieApi } from '../../services/api'
 
 export const DashboardMovie: React.FC = () => {
-  interface MovieRepository {
+  interface IMovie {
     Title: string
     Poster: string
     Plot: string
-    Writer: string
     Director: string
-    PLot: string
+    Error?: any
   }
 
   const [newMovie, setNewMovie] = React.useState('')
-  const [movies, setMovies] = React.useState<MovieRepository[]>([])
+  const [movies, setMovies] = React.useState<IMovie[]>([])
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>): void {
     setNewMovie(event.target.value)
   }
-  function handleAddRepository(event: React.FormEvent<HTMLFormElement>) {
+  async function handleAddRepository(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    movieApi.get(`/?apikey=e857f5df&t=${newMovie}`)
-      .then(response => response.data)
-      .then(data => {
-        if (!data.Error) {
-          let repositoriesCollection = [...movies, data]
-          setMovies(repositoriesCollection)
-        }
-      })
+    try {
+      const response = await movieApi.get<IMovie>(`/?apikey=e62606e2&t=${newMovie.toLowerCase()}`)
+      const optionalMovie = response.data
+      if (!optionalMovie.Error) {
+        setMovies([...movies, optionalMovie])
+      } else {
+        console.log("Algo deu errado!!!")
+      }
+    } catch (err) {
+      console.log("Algo deu errado!!!")
+    }
   }
 
   return (
     <>
       <img src={logo} alt="GitCollection" />
-      <Title> Catalogo de filmes </Title>
+      <Title> Catalogo de filmes OMDB </Title>
       <Form onSubmit={handleAddRepository}>
-        <input onChange={handleInputChange} placeholder="movie_name" />
-        <button type="submit"> Buscar </button>
+        <input onChange={handleInputChange} placeholder="Digite o nome do filme..." />
+        <button type="submit"> Buscar filme </button>
       </Form>
       <Repos>
         {
           movies.map((movie, index) => (
-            <a href="/m" key={`${movie.Title}_${movie.Director}`+index}>
+            <a href="/m" key={`${movie.Title}_${movie.Director}` + index}>
               <img
                 src={movie.Poster}
                 alt={movie.Title} />
